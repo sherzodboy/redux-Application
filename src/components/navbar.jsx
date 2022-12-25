@@ -8,11 +8,17 @@ const Navbar = () => {
         <img src={logo} className="logo" alt="logo" />
       </Link>
 
-      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-        <Link class="me-3 py-2 text-dark text-decoration-none" to={"/login"}>
+      <nav className="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+        <Link
+          className="me-3 py-2 text-dark text-decoration-none"
+          to={"/login"}
+        >
           Login
         </Link>
-        <Link class="me-3 py-2 text-dark text-decoration-none" to={"/register"}>
+        <Link
+          className="me-3 py-2 text-dark text-decoration-none"
+          to={"/register"}
+        >
           Register
         </Link>
       </nav>
