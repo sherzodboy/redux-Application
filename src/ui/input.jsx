@@ -8,6 +8,7 @@ const Input = ({ label, state, setState, type = "text" }) => {
         className="form-control"
         id="floatingInput"
         placeholder={label}
+        htmlFor="floatingInput"
       />
       <label>{label}</label>
     </div>
