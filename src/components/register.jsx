@@ -12,7 +12,7 @@ const Register = () => {
   const dispatch = useDispatch();
   const { isLoading } = useSelector((state) => state.auth);
 
-  const loginHandler = async (e) => {
+  const registerHandler = async (e) => {
     e.preventDefault();
     dispatch(registerUserStart());
     const user = { username: name, email, password };
@@ -44,7 +44,7 @@ const Register = () => {
           <button
             className="w-100 btn btn-lg btn-primary mt-3"
             disabled={isLoading}
-            onClick={loginHandler}
+            onClick={registerHandler}
             type="submit"
           >
             {isLoading ? "loading..." : "Register"}
