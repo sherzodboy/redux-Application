@@ -32,7 +32,7 @@ const Login = () => {
       navigate("/");
     }
     // eslint-disable-next-line
-  }, []);
+  }, [loggedIn]);
 
   return (
     <div className="text-center mt-5">
