@@ -6,7 +6,7 @@ import { getItem } from "./helpers/persistance-storage";
 import AuthService from "./service/auth";
 import { signUserSuccess } from "./slice/auth";
 import ArticleService from "./service/article";
-import { getArticlesStart, getArticlesSuccess } from "./slice/article";
+import { getArticlesStart, getArticleSuccess } from "./slice/article";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ const App = () => {
     dispatch(getArticlesStart());
     try {
       const response = await ArticleService.getArticles();
-      dispatch(getArticlesSuccess(response.articles));
+      dispatch(getArticleSuccess(response.articles));
     } catch (error) {
       console.log(error);
     }
@@ -40,7 +40,7 @@ const App = () => {
   }, []);
 
   return (
-    <>
+    <div>
       <Navbar />
       <div className="container">
         <Routes>
@@ -50,8 +50,7 @@ const App = () => {
           <Route path="/article/:slug" element={<ArticleDetail />} />
         </Routes>
       </div>
-    </>
+    </div>
   );
 };
-
 export default App;
