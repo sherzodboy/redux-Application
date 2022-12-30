@@ -12,8 +12,6 @@ import {
 import { getItem } from "./helpers/persistance-storage";
 import AuthService from "./service/auth";
 import { signUserSuccess } from "./slice/auth";
-import ArticleService from "./service/article";
-import { getArticlesStart, getArticleSuccess } from "./slice/article";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -27,22 +25,12 @@ const App = () => {
     }
   };
 
-  const getArticles = async () => {
-    dispatch(getArticlesStart());
-    try {
-      const response = await ArticleService.getArticles();
-      dispatch(getArticleSuccess(response.articles));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
     const token = getItem("token");
     if (token) {
       getUser();
     }
-    getArticles();
+
     // eslint-disable-next-line
   }, []);
 
