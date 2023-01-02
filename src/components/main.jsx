@@ -65,6 +65,7 @@ const Main = () => {
                       <button
                         type="button"
                         className="btn btn-sm btn-outline-warning"
+                        onClick={() => navigate(`edit-article/${item.slug}`)}
                       >
                         Edit
                       </button>
