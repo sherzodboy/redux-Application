@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   getArticleDetailFailure,
   getArticleDetailStart,
   getArticleDetailSuccess,
+  postArticleFailure,
+  postArticleStart,
+  postArticleSuccess,
 } from "../slice/article";
 import ArticleService from "./../service/article";
 import ArticleForm from "./article-form";
@@ -15,6 +18,7 @@ const EditArticle = () => {
   const [body, setBody] = useState("");
   const dispatch = useDispatch();
   const { slug } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getArticleDetail = async () => {
@@ -34,7 +38,18 @@ const EditArticle = () => {
     // eslint-disable-next-line
   }, []);
 
-  const formSubmit = () => {};
+  const formSubmit = async (e) => {
+    e.preventDefault();
+    const article = { title, description, body };
+    dispatch(postArticleStart());
+    try {
+      await ArticleService.editArticle(slug, article);
+      dispatch(postArticleSuccess());
+      navigate("/");
+    } catch (error) {
+      dispatch(postArticleFailure());
+    }
+  };
 
   const formProps = {
     title,
