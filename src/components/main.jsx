@@ -29,7 +29,11 @@ const Main = () => {
       {isLoading && <Loader />}
       <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         {articles.map((item) => (
-          <ArticleCard item={item} getArticles={getArticles} />
+          <ArticleCard
+            item={item}
+            key={item.favoritesCount}
+            getArticles={getArticles}
+          />
         ))}
       </div>
     </>
